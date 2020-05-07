@@ -1,5 +1,4 @@
 ﻿  NumberSystem.cpp
-C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(64,42): error C2664: "int integerPart(char,char,char *)": невозможно преобразовать аргумент 1 из "char [256]" в "char"
-C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(64,29): message : Не существует контекста, в котором такое преобразование возможно
-C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(28,5): message : см. объявление "integerPart"
-C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(66,5): error C2310: в блоках catch должен быть указан один тип
+C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(85,29): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\maksb\git_GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(35): warning C4715: digit: значение возвращается не при всех путях выполнения
+  NumberSystem.vcxproj -> C:\Users\maksb\git_GitHub\NumberSystem\Debug\NumberSystem.exe

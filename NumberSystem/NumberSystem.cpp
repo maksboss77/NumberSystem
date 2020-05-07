@@ -1,7 +1,16 @@
 ﻿#include <iostream>
 
+#define NUMBER_SYSTEM_BASE_CODE -1;
+#define NUMBER_SYSTEM_BASE_TEXT "The base of the number system is less than 2!";
+
 using namespace std;
 
+
+class NumberSystemBase {
+    public:
+        virtual const char* getMessage() { return NUMBER_SYSTEM_BASE_TEXT; };
+        virtual int getCode() { return NUMBER_SYSTEM_BASE_CODE; };
+};
 
 char digit(int num)
 {
@@ -25,49 +34,65 @@ char digit(int num)
     }
 }
 
-int integerPart(char n[256], char s[256], char *str) {
+int integerPart(int a, int p, char* s) {
     
-
-    int num = (int) n;
-    s = (int) s;
-    int rest = num % n;
-    num /= s;
-
-    if (num == 0) {
-        str[0] = digit(rest);
-        return 1;
+    if (p < 2) {
+        throw new NumberSystemBase();
     }
 
-    int k = integerPart(n, s, str);
-    str[k++] = digit(rest);
-
+    int num = (int)a;
+    int rest = num % p;
+    num /= p;
+    if (num == 0)
+    {
+        s[0] = digit(rest); return 1;
+    }
+    int k = integerPart(num, p, s);
+    s[k++] = digit(rest);
     return k;
+}
+
+// Получение дробной части числа
+void doublePart(double a, int p, char* s)
+{
+    int iter = 0;
+    int k = 0;
+    double a1 = a;
+    do {
+        a1 = a1 * p;
+        int num = (int)(a1);
+        s[k++] = digit(num);
+        a1 -= (int)a1;
+        iter++;
+    } while (a1 > 0.00000001 && iter < 10);
+    s[k] = '\0';
 }
 
 
 int main()
 {
-    std::cout << "Hello World!\n";
-
-    char num[256] = { 0 }; //число в десятичной системе счисления
-    char sys[256] = { 0 }; //основание системы счисления
-
-    char str[80] = { 0 };
+    double a;
+    char s[80] = { 0 };
+    int p;
 
     cout << "Enter a number: ";
-    cin >> num;
+    cin >> a;
 
     cout << "Enter the base of the number system: ";
-    cin >> sys;
-
+    cin >> p;
+    
     try {
-        
-        int k = integerPart(num, sys, str);
-    }
-    catch() {
+        int k = integerPart(a, p, s);
+        s[k++] = ',';
 
-    }
+        int intA;
+        intA = (int)a;
+        doublePart(a - intA, p, &s[k]);
 
-    cout << "\n" << str << "\n";
+        cout << s;
+    }
+    catch (NumberSystemBase* ex) {
+        cout << ex->getMessage() << " Code: " << ex->getCode();
+    }
 
 }
