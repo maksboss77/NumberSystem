@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#pragma once
+#include <iostream>
 
 #define NUMBER_SYSTEM_BASE_CODE -1;
 #define NUMBER_SYSTEM_BASE_TEXT "The base of the number system is less than 2!";
@@ -113,15 +114,19 @@ int main()
             doublePart(a - intA, p, &s[k]);
 
             cout << s;
+            delete[] s;
+            
         }
         catch (NumberSystemBase * ex) {
             cout << ex->getMessage() << " Code: " << ex->getCode();
+            delete[] s;
         }
 
     }
     catch (NumberNotNull * ex)
     {
         cout << ex->getMessage() << " Code: " << ex->getCode();
+        delete[] s;
     }
 
     
