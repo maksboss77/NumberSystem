@@ -3,14 +3,33 @@
 #define NUMBER_SYSTEM_BASE_CODE -1;
 #define NUMBER_SYSTEM_BASE_TEXT "The base of the number system is less than 2!";
 
+#define NUMBER_NOT_NULL_CODE 101;
+#define NUMBER_NOT_NULL_TEXT "The number must not be zero!";
+
+
 using namespace std;
 
+class NumberError {
+    public:
+        virtual const char* getMessage() = 0;
+        virtual int getCode() = 0;
 
-class NumberSystemBase {
+};
+
+
+class NumberSystemBase:NumberError {
     public:
         virtual const char* getMessage() { return NUMBER_SYSTEM_BASE_TEXT; };
         virtual int getCode() { return NUMBER_SYSTEM_BASE_CODE; };
+
 };
+
+class NumberNotNull:NumberError {
+public:
+    virtual const char* getMessage() { return NUMBER_NOT_NULL_TEXT; };
+    virtual int getCode() { return NUMBER_NOT_NULL_CODE; };
+};
+
 
 char digit(int num)
 {
@@ -75,24 +94,35 @@ int main()
     char s[80] = { 0 };
     int p;
 
-    cout << "Enter a number: ";
-    cin >> a;
+    try
+    {
+        cout << "Enter a number: ";
+        cin >> a;
+        if (a == 0)
+            throw new NumberNotNull;
 
-    cout << "Enter the base of the number system: ";
-    cin >> p;
-    
-    try {
-        int k = integerPart(a, p, s);
-        s[k++] = ',';
+        cout << "Enter the base of the number system: ";
+        cin >> p;
 
-        int intA;
-        intA = (int)a;
-        doublePart(a - intA, p, &s[k]);
+        try {
+            int k = integerPart(a, p, s);
+            s[k++] = ',';
 
-        cout << s;
+            int intA;
+            intA = (int)a;
+            doublePart(a - intA, p, &s[k]);
+
+            cout << s;
+        }
+        catch (NumberSystemBase * ex) {
+            cout << ex->getMessage() << " Code: " << ex->getCode();
+        }
+
     }
-    catch (NumberSystemBase* ex) {
+    catch (NumberNotNull * ex)
+    {
         cout << ex->getMessage() << " Code: " << ex->getCode();
     }
 
+    
 }
