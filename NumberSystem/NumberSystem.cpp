@@ -114,19 +114,17 @@ int main()
             doublePart(a - intA, p, &s[k]);
 
             cout << s;
-            delete[] s;
+            //delete[] s; Массив не динамический => очистка памяти не нужна
             
         }
         catch (NumberSystemBase * ex) {
             cout << ex->getMessage() << " Code: " << ex->getCode();
-            delete[] s;
         }
 
     }
     catch (NumberNotNull * ex)
     {
         cout << ex->getMessage() << " Code: " << ex->getCode();
-        delete[] s;
     }
 
     

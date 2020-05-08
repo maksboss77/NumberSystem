@@ -1,7 +1,1 @@
-﻿  NumberSystem.cpp
-C:\Users\Олечка\GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(109,33): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Олечка\GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(117,23): warning C4154: удаление массива; выполнено преобразование к указателю
-C:\Users\Олечка\GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(122,23): warning C4154: удаление массива; выполнено преобразование к указателю
-C:\Users\Олечка\GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(129,19): warning C4154: удаление массива; выполнено преобразование к указателю
-C:\Users\Олечка\GitHub\NumberSystem\NumberSystem\NumberSystem.cpp(55): warning C4715: digit: значение возвращается не при всех путях выполнения
-  NumberSystem.vcxproj -> C:\Users\Олечка\GitHub\NumberSystem\Debug\NumberSystem.exe
+﻿  NumberSystem.vcxproj -> C:\Users\maksb\git_GitHub\NumberSystem\Debug\NumberSystem.exe
